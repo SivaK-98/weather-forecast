@@ -7,6 +7,12 @@
 <body>
     <form action="{{ url_for('check') }}" method="post">
     <input type="text" id="place" class="fadeIn second" name="place" placeholder="place">
+    <input type="radio" id="recent_history" name="type" value="recent_history">
+    <label for="recent_history">Recent History</label><br>
+    <input type="radio" id="realtime" name="type" value="realtime">
+    <label for="realtime">Real Time</label>
+    <input type="radio" id="forecast" name="type" value="forecast">
+    <label for="forecast">Forecast</label>
     <input type="submit" value="Check">
     </form>
 </body>

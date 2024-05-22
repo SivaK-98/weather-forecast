@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+import weather
 
 app = Flask(__name__)
 
@@ -10,10 +11,12 @@ def index():
 
 @app.route("/check", methods=['POST', 'GET'])
 def check():
-    #if request.method == "POST":
-    place = request.form.get("place")
-    print(place)
-    return place
+    if request.method == "POST":
+        place = request.form.get("place")
+        request_type = request.form.get("type")
+        result = weather.get_weather(place, request_type)
+        print("Result: ", result)
+        return jsonify(result[1])
 
 
 if __name__ == '__main__':
